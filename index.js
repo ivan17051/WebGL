@@ -1,23 +1,7 @@
 (function () {
     var canvas = document.getElementById("glcanvas");
-    var gl;
-    var contexts = ["webgl", "experimental-webgl", "webkit-3d", "moz-webgl"];
+    var gl = glUtils.checkWebGL(canvas);
 
-    for (var i = 0; i < contexts.length; i++) {
-        try {
-            var context = contexts[i];
-            gl = canvas.getContext(context);
-        }
-        catch (error) {
-            //Sementara kosong
-        }
-        if (gl) {
-            break;
-        }
-    }
-    if (!gl) {
-        alert("WebGL tidak ditemukan. Tolong gunakan Chrome/Firefox terbaru.")
-    }
     //Bersihakan layar jadi hitam
     gl.clearColor(0.0, 0.0, 0.0, 1.0);
 
